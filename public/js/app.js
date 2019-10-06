@@ -32,7 +32,7 @@
 
      dataMessage.textContent = ''
 
-     fetch('http://localhost:3000/weather?address='+locationName).then((response)=>{
+     fetch('/weather?address='+locationName).then((response)=>{
      response.json().then((data)=>{
         dataMessage.textContent = ''
         if (data.error) {
