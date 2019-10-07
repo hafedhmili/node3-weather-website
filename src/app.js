@@ -65,7 +65,6 @@ app.get('/about',(req,res)=> {
         title: 'About Me',
         name: 'Hafedh Mili'       
     })
-
 })
 
 // help
@@ -75,7 +74,6 @@ app.get('/help',(req,res)=> {
         name: 'Hafedh',
         message: 'Kick the machine and unplug-it'
     })
-
 })
 
 app.get('/nohtml', (req,res) => {
@@ -95,12 +93,14 @@ app.get('/nohtml', (req,res) => {
 
 // weather route
 app.get('/weather',(req,res) => {
+    // if there is no address key/value pair in the URL
     if (!req.query.address){
         return res.send({
             error: 'You must provide an address'
         })
     }
 
+    // there is an address => start by geocoding
     geocode(req.query.address, (error,{latitude, longitude, location}={})=> {
         if (error) {
             return res.send({error})
